@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natalcia Walentynki</title>
+    <style>
+        
+        
+        
+        
+        .flex {
+            display: flex;
+        }
+
+        .flex-col {
+            flex-direction: column;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .justify-center {
+            justify-content: center;
+        }
+
+        .h-screen {
+            height: 100vh;
+        }
+
+        .-mt-16 {
+            margin-top: -4rem;
+        }
+
+        .text-4xl {
+            font-size: 2.25rem;
+        }
+
+        .font-bold {
+            font-weight: bold;
+        }
+
+        .my-4 {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .bg-green-500 {
+            background-color: #34D399;
+        }
+
+        .hover\:bg-green-700:hover {
+            background-color: #047857;
+        }
+
+        .bg-red-500 {
+            background-color: #EF4444;
+        }
+
+        .hover\:bg-red-700:hover {
+            background-color: #991B1B;
+        }
+
+        .text-white {
+            color: #ffffff;
+        }
+
+        .py-2 {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+
+        .px-4 {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        .rounded {
+            border-radius: 0.375rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root" class="flex flex-col items-center justify-center h-screen -mt-16">
+        <img id="bearImage" class="h-[200px]" src="https://gifdb.com/images/high/cute-love-bear-roses-ou7zho5oosxnpo6k.gif" />
+        <h1 id="questionText" class="text-4xl my-4">Czy natalcia zostanie moją walentynką?</h1>
+        <div id="buttonsContainer">
+            <button id="yesButton" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" style="font-size:16px;">Tak</button>
+            <button id="noButton" class=" bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Nie</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let noCount = 0;
+            let yesPressed = false;
+
+            const yesButton = document.getElementById('yesButton');
+            const noButton = document.getElementById('noButton');
+            const bearImage = document.getElementById('bearImage');
+            const questionText = document.getElementById('questionText');
+
+            yesButton.addEventListener('click', function() {
+                yesPressed = true;
+                bearImage.src = 'https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif';
+                questionText.innerText = 'Hihihi!!!';
+                buttonsContainer.style.display = 'none';
+            });
+
+            noButton.addEventListener('click', function() {
+                noCount++;
+                const phrases = [
+                "Nie",
+"Czy jesteś pewna?",
+"Naprawdę pewna?",
+"Pomyśl jeszcze raz!",
+"Ostatnia szansa!",
+"Na pewno nie?",
+"Możesz tego żałować!",
+"Przemyśl to jeszcze raz!",
+"Czy jesteś całkowicie pewna?",
+"To może być błąd!",
+"Miej serce",
+"Nie bądź taka zimna!",
+"Zmiana zdania?",
+"Może jednak?",
+"Ostateczna odpowiedź?",
+"Łamiesz mi serce ;("
+                ];
+                const buttonText = phrases[Math.min(noCount, phrases.length - 1)];
+                noButton.innerText = buttonText;
+
+                // Increase the font size of the Yes button
+                const currentFontSize = parseInt(yesButton.style.fontSize) || 16;
+                yesButton.style.fontSize = (currentFontSize + 20) + 'px';
+            });
+        });
+    </script>
+</body>
+
+</html>
